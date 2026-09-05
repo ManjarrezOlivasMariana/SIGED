@@ -1,0 +1,634 @@
+<?php
+declare(strict_types=1);
+
+function route(string $action): void {
+  switch ($action) {
+    // ========================================
+    // AUTENTICACIÓN
+    // ========================================
+    case 'elegir_rol':
+      require __DIR__ . '/auth/elegir_rol.php';
+      break;
+    
+    case 'login':
+      require __DIR__ . '/auth/login.php';
+      break;
+    
+    case 'logout':
+      require __DIR__ . '/auth/logout.php';
+      break;
+
+    // ========================================
+    // DOCENTE - HOME Y PERFIL
+    // ========================================
+    case 'home_docente':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/docente/home_docente.php';
+      break;
+
+    case 'doc_home_data':
+      require __DIR__ . '/docente/home_data.php';
+      break;
+
+    case 'doc_hist':
+      require __DIR__ . '/docente/historico.php';
+      break;
+
+    case 'doc_hist_data':
+      require __DIR__ . '/docente/historico_data.php';
+      break;
+
+    // ========================================
+    // DOCENTE - FOTO DE PERFIL
+    // ========================================
+    case 'doc_foto_upload':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/docente/foto_upload.php';
+      break;
+
+    // ========================================
+    // DOCENTE - FIRMA DIGITAL
+    // ========================================
+    case 'doc_firma':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/docente/firma.php';
+      break;
+
+    case 'doc_firma_guardar':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/docente/doc_firma_guardar.php';
+      break;
+
+    // ========================================
+    // DOCENTE - SOLICITUDES
+    // ========================================
+    case 'sol_nueva':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/solicitudes/nueva.php';
+      break;
+
+    case 'sol_guardar':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/solicitudes/guardar.php';
+      break;
+
+    case 'sol_editar':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/solicitudes/editar.php';
+      break;
+
+    case 'sol_subir':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/solicitudes/subir.php';
+      break;
+
+    case 'sol_enviar':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/solicitudes/enviar.php';
+      break;
+
+    case 'sol_mis':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/solicitudes/mis.php';
+      break;
+
+    // ========================================
+    // DOCENTE - CORRECCIONES
+    // ========================================
+    case 'sol_corr_new':
+      require __DIR__ . '/solicitudes/corr_new.php';
+      break;
+
+    case 'sol_corr_guardar':
+      require __DIR__ . '/solicitudes/corr_guardar.php';
+      break;
+
+    // ========================================
+    // FORMULARIOS DE JEFE DEPARTAMENTO
+    // ========================================
+    case 'estr_mount':
+      require __DIR__ . '/utils/roles.php';
+      require __DIR__ . '/solicitudes/estr_mount.php';
+      break;
+
+    case 'estr_guardar':
+      require __DIR__ . '/utils/roles.php';
+      require __DIR__ . '/solicitudes/estr_guardar.php';
+      break;
+
+      case 'tut_mount':
+        require __DIR__ . '/solicitudes/tut_mount.php';
+        break;
+    
+    case 'tut_guardar':
+        require __DIR__ . '/solicitudes/tut_guardar.php';
+        break;
+
+    // ========================================
+    // DOCENTE - TICKETS DE SOPORTE
+    // ========================================
+    case 'tk_list':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/tickets/docente_list.php';
+      break;
+
+    case 'tk_data':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/tickets/docente_data.php';
+      break;
+
+    case 'tk_crear':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/tickets/crear.php';
+      break;
+
+    case 'tk_guardar':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/tickets/guardar.php';
+      break;
+
+    case 'tk_ver':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/tickets/ver.php';
+      break;
+
+    case 'tk_comentar':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/tickets/comentar.php';
+      break;
+
+    case 'tk_resp_data':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/tickets/resp_data.php';
+      break;
+
+    case 'tk_evid_subir':
+        require __DIR__.'/tickets/tk_evid_subir.php';
+        requireRole(['DOCENTE']);
+        break;
+    
+    case 'tk_evid_del':
+        require __DIR__.'/tickets/tk_evid_del.php';
+        requireRole(['DOCENTE']);
+        break;
+    
+    case 'tk_evid_descargar':
+        require __DIR__.'/tickets/tk_evid_descargar.php';
+        requireRole(['DOCENTE, JEFE_DEPARTAMENTO']);
+        break;
+    
+
+    // ========================================
+    // JEFE - HOME Y PERFIL
+    // ========================================
+    case 'home_jefe':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['JEFE_DEPARTAMENTO']);
+      require __DIR__ . '/usuarios/home_jefe.php';
+      break;
+
+    case 'jefe_home_data':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['JEFE_DEPARTAMENTO']);
+      require __DIR__ . '/usuarios/jefe_home_data.php';
+      break;
+    
+    
+
+    // ========================================
+    // JEFE - FOTO DE PERFIL
+    // ========================================
+    case 'jefe_foto_upload':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['JEFE_DEPARTAMENTO']);
+      require __DIR__ . '/usuarios/jefe_foto_upload.php';
+      break;
+
+    // ========================================
+    // JEFE - FIRMA DIGITAL
+    // ========================================
+    case 'jefe_firma_guardar':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['JEFE_DEPARTAMENTO']);
+      require __DIR__ . '/usuarios/jefe_firma_guardar.php';
+      break;
+
+    // ========================================
+    // JEFE - BANDEJA DE SOLICITUDES
+    // ========================================
+    case 'jefe_bandeja':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['JEFE_DEPARTAMENTO']);
+      require __DIR__ . '/solicitudes/jefe_bandeja.php';
+      break;
+
+    case 'jefe_ver':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['JEFE_DEPARTAMENTO']);
+      require __DIR__ . '/solicitudes/jefe_ver.php';
+      break;
+
+    case 'jefe_decidir':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['JEFE_DEPARTAMENTO']);
+      require __DIR__ . '/solicitudes/jefe_decidir.php';
+      break;
+
+    case 'ci_guardar':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['JEFE_DEPARTAMENTO']);
+      require __DIR__ . '/solicitudes/ci_guardar.php';
+      break;
+
+    case 'dep_guardar':
+      require __DIR__ . '/solicitudes/dep_guardar.php';
+      break;
+
+
+      case 'cse_guardar': require __DIR__ . '/solicitudes/cse_guardar.php'; break;
+      case 'cse_del':     require __DIR__ . '/solicitudes/cse_del.php';     break;
+    
+
+     
+      case 'cca_guardar':
+      require __DIR__ . '/solicitudes/cca_guardar.php';
+       break;
+
+      case 'cca_det_del':
+      require __DIR__ . '/solicitudes/cca_det_del.php';
+      break;
+
+      case 'lad_guardar':
+        require __DIR__ . '/solicitudes/lad_guardar.php';
+        break;
+
+      case 'clfg_guardar':
+          require __DIR__ . '/solicitudes/clfg_guardar.php';
+          break;
+      
+      case 'cha_del':
+        require __DIR__ . '/solicitudes/cha_del.php';
+        break;
+
+      case 'cha_guardar':
+        require __DIR__ . '/solicitudes/cha_guardar.php';
+        break;
+      
+      case 'cha_mount':
+        require __DIR__ . '/solicitudes/cha_mount.php';
+        break;
+      
+        
+        case 'csep_mount':
+          require __DIR__ . '/solicitudes/csep_mount.php';
+          break;
+
+        case 'csep_guardar':
+          require __DIR__ . '/solicitudes/csep_guardar.php';
+          break;
+
+       case 'csep_del':
+          require __DIR__ . '/solicitudes/csep_del.php';
+          break;
+
+        case 'csem_mount':
+            require __DIR__ . '/solicitudes/csem_mount.php';
+            break;
+          
+        case 'csem_guardar':
+            require __DIR__ . '/solicitudes/csem_guardar.php';
+            break;
+          
+        case 'csem_del':
+            require __DIR__ . '/solicitudes/csem_del.php';
+            break;
+
+         case 'cpi_mount':
+              require __DIR__ . '/solicitudes/cpi_mount.php';
+              break;
+            
+         case 'cpi_guardar':
+              require __DIR__ . '/solicitudes/cpi_guardar.php';
+              break;
+              
+         case 'cmp_mount':
+               require __DIR__ . '/solicitudes/cmp_mount.php';
+                break;
+              
+         case 'cmp_guardar':
+              require __DIR__ . '/solicitudes/cmp_guardar.php';
+                break;
+
+        case 'cmdi_mount':
+                require __DIR__ . '/solicitudes/cmdi_mount.php';
+                  break;
+                
+        case 'cmdi_guardar':
+                 require __DIR__ . '/solicitudes/cmdi_guardar.php';
+                  break;
+
+        case 'ccid_mount':
+                  require __DIR__ . '/solicitudes/ccid_mount.php';
+                  break;
+                  
+         case 'ccid_guardar':
+                   require __DIR__ . '/solicitudes/ccid_guardar.php';
+                   break;
+
+         case 'ccui_mount':
+                  require __DIR__ . '/solicitudes/ccui_mount.php';
+                  break;
+                  
+         case 'ccui_guardar':
+                  require __DIR__ . '/solicitudes/ccui_guardar.php';
+                  break;
+         
+         case 'cdpc_mount':
+                   require __DIR__ . '/solicitudes/cdpc_mount.php';
+                   break;
+                  
+         case 'cdpc_guardar':
+                    require __DIR__ . '/solicitudes/cdpc_guardar.php';
+                    break;
+         
+         case 'cipc_mount':
+                     require __DIR__ . '/solicitudes/cipc_mount.php';
+                     break;
+                    
+        case 'cipc_guardar':
+                      require __DIR__ . '/solicitudes/cipc_guardar.php';
+                      break;
+         
+        case 'cpft_mount':
+                       require __DIR__ . '/solicitudes/cpft_mount.php';
+                       break;
+                      
+        case 'cpft_guardar':
+                        require __DIR__ . '/solicitudes/cpft_guardar.php';
+                        break;
+                                   
+        case 'cdre_mount':
+                        require __DIR__ . '/solicitudes/cdre_mount.php';
+                        break;
+                        
+       case 'cdre_guardar':
+                        require __DIR__ . '/solicitudes/cdre_guardar.php';
+                        break;
+
+       case 'cdei_mount':
+                        require __DIR__ . '/solicitudes/cdei_mount.php';
+                        break;
+                          
+       case 'cdei_guardar':
+                        require __DIR__ . '/solicitudes/cdei_guardar.php';
+                        break;
+                          
+       case 'cdpe_mount':
+                        require __DIR__ . '/solicitudes/cdpe_mount.php';
+                        break;
+                        
+        case 'cdpe_guardar':
+                        require __DIR__ . '/solicitudes/cdpe_guardar.php';
+                        break;
+       case 'cae_mount':
+                       require __DIR__ . '/solicitudes/cae_mount.php';
+                          break;
+                        
+       case 'cae_guardar':
+                       require __DIR__ . '/solicitudes/cae_guardar.php';
+                        break;
+
+       case 'cst_mount':
+                      require __DIR__ . '/solicitudes/cst_mount.php';
+                      break;
+                        
+       case 'cst_guardar':
+                       require __DIR__ . '/solicitudes/cst_guardar.php';
+                       break;
+                        
+        case 'cst_del':
+                      require __DIR__ . '/solicitudes/cst_del.php';
+                      break;
+
+        case 'cco_mount':
+                     require __DIR__ . '/solicitudes/cco_mount.php';
+                    break;
+                      
+         case 'cco_guardar':
+                    require __DIR__ . '/solicitudes/cco_guardar.php';
+                    break;
+
+         case 'cpp_mount':
+                    require __DIR__ . '/solicitudes/cpp_mount.php';
+                     break;
+                    
+         case 'cpp_guardar':
+                    require __DIR__ . '/solicitudes/cpp_guardar.php';
+                    break;
+                                                                                  
+         case 'cce_mount':
+                    require __DIR__ . '/solicitudes/cce_mount.php';
+                     break;
+                    
+        case 'cce_guardar':
+                     require __DIR__ . '/solicitudes/cce_guardar.php';
+                    break;
+        case 'cjea_mount':
+                    require __DIR__ . '/solicitudes/cjea_mount.php';
+                     break;
+                    
+        case 'cjea_guardar':
+                    require __DIR__ . '/solicitudes/cjea_guardar.php';
+                    break;
+         
+        case 'cepa_mount':
+                    require __DIR__ . '/solicitudes/cepa_mount.php';
+                    break;
+                    
+       case 'cepa_guardar':
+                    require __DIR__ . '/solicitudes/cepa_guardar.php';
+                    break;
+                                
+       case 'pasg_mount':
+                     require __DIR__ . '/solicitudes/pasg_mount.php';
+                      break;
+                    
+      case 'pasg_guardar':
+                    require __DIR__ . '/solicitudes/pasg_guardar.php';
+                    break;
+                    
+      case 'cppl_mount':
+                  require __DIR__ . '/solicitudes/cppl_mount.php';
+                  break;
+                    
+      case 'cppl_guardar':
+                  require __DIR__ . '/solicitudes/cppl_guardar.php';
+                  break;
+
+     case 'cppt_mount':
+                  require __DIR__ . '/solicitudes/cppt_mount.php';
+                  break;
+                  
+       case 'cppt_guardar':
+                  require __DIR__ . '/solicitudes/cppt_guardar.php';
+                  break;
+      case 'cmes_mount':
+                  require __DIR__ . '/solicitudes/cmes_mount.php';
+                  break;
+                  
+      case 'cmes_guardar':
+                  require __DIR__ . '/solicitudes/cmes_guardar.php';
+                  break;
+
+       case 'orme_mount':
+                  require __DIR__ . '/solicitudes/orme_mount.php';
+                  break;
+                  
+       case 'orme_guardar':
+                  require __DIR__ . '/solicitudes/orme_guardar.php';
+                 break;
+
+       case 'cmel_mount':
+                  require __DIR__ . '/solicitudes/cmel_mount.php';
+                  break;
+                
+       case 'cmel_guardar':
+                  require __DIR__ . '/solicitudes/cmel_guardar.php';
+                  break;
+                                                              
+
+
+    // ========================================
+    // JEFE - CORRECCIONES
+    // ========================================
+    case 'corr_editar':
+      require __DIR__ . '/solicitudes/corr_editar.php';
+      break;
+
+    case 'corr_aplicar':
+      require __DIR__ . '/solicitudes/corr_aplicar.php';
+      break;
+
+    // ========================================
+    // JEFE - TICKETS DE SOPORTE
+    // ========================================
+    case 'tkj_list':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['JEFE_DEPARTAMENTO']);
+      require __DIR__ . '/tickets_jefe/list.php';
+      break;
+
+    case 'tkj_data':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['JEFE_DEPARTAMENTO']);
+      require __DIR__ . '/tickets_jefe/data.php';
+      break;
+
+    case 'tkj_ver':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['JEFE_DEPARTAMENTO']);
+      require __DIR__ . '/tickets_jefe/ver.php';
+      break;
+
+    case 'tkj_comentar':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['JEFE_DEPARTAMENTO']);
+      require __DIR__ . '/tickets_jefe/comentar.php';
+      break;
+
+    case 'tkj_estado':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['JEFE_DEPARTAMENTO']);
+      require __DIR__ . '/tickets_jefe/estado.php';
+      break;
+    
+    case 'sol_descargar':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE','JEFE_DEPARTAMENTO']); // O ['DOCENTE', 'JEFE_DEPARTAMENTO'] si ambos pueden descargar
+      require __DIR__ . '/solicitudes/descargar.php';
+      break;
+    
+    case 'sol_evid_del':
+      require __DIR__ . '/utils/roles.php';
+      requireRole(['DOCENTE']);
+      require __DIR__ . '/solicitudes/evid_eliminar.php';
+      break;
+    
+
+    // ========================================
+    // CONVOCATORIAS
+    // ========================================
+    case 'conv_get':
+      require __DIR__ . '/convocatoria/get.php';
+      break;
+
+    case 'conv_ack':
+      require __DIR__ . '/convocatoria/ack.php';
+      break;
+
+    case 'conv_ping':
+      header('Content-Type: text/plain; charset=UTF-8');
+      echo "OK / routes.php alcanzado\n";
+      break;
+
+    // ========================================
+    // PDF Y DOCUMENTOS
+    // ========================================
+    case 'doc_pdf':
+      require __DIR__ . '/docente/pdf_generar.php';
+      break;
+
+
+    case 'pdf_demo':
+      require __DIR__ . '/utils/roles.php';
+      requireLogin();
+      require __DIR__ . '/../../pdf/plantillas/demo_tcpdf.php';
+      break;
+
+
+
+    // ========================================
+    // SUBDIRECTOR ACADEMICO
+    // ========================================
+    case 'subd_login':
+      require __DIR__ . '/../php/subd_login.php';
+      break;
+  
+   case 'subd_auth':
+      require __DIR__ . '/../php/subd_auth.php';
+      break;
+   
+    case 'subd_docs':
+      require __DIR__ . '/../php/subd_docs.php';
+      break;
+  
+    case 'subd_firma_save':
+      require __DIR__ . '/../php/subd_firma_save.php';
+      break;
+  
+
+    // ========================================
+    // RUTA NO ENCONTRADA
+    // ========================================
+    default:
+      http_response_code(404);
+      echo "<h1>404</h1><p>Ruta no encontrada.</p>";
+  }
+}
