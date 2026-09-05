@@ -146,3 +146,4 @@ Una vez levantado el servidor, accede a `http://localhost/siged/`. El sistema re
 
 Proyecto académico — Ingeniería de Software SEM115  
 [zClimax](https://github.com/zClimax)
+[ManjarrezOlivasMariana](https://github.com/ManjarrezOlivasMariana)
